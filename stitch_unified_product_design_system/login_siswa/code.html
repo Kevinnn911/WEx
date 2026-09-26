@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+  <meta content="mobile_tab" name="shell-type">
+  <title>PKL Monitoring - Masuk Siswa</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..900;1,6..12,300..900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+      body {
+        overscroll-behavior-y: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#98f0ff",
+            "surface-bright": "#f3faff",
+            "on-secondary-container": "#673800",
+            "background": "#F7FBFC",
+            "surface-container-low": "#e6f6ff",
+            "on-tertiary": "#ffffff",
+            "surface-white": "#FFFFFF",
+            "status-success": "#18794E",
+            "on-error": "#ffffff",
+            "outline": "#6e797b",
+            "on-surface": "#0E2933",
+            "status-error": "#B42318",
+            "error": "#ba1a1a",
+            "primary-container": "#0b7c8a",
+            "primary-fixed": "#9af0ff",
+            "accent-deep": "#B85C00",
+            "surface-container": "#daf2fe",
+            "secondary": "#E67E22",
+            "tertiary": "#00616c",
+            "status-warning": "#A15C00",
+            "on-surface-variant": "#4E6169",
+            "primary": "#008294",
+            "surface-container-lowest": "#ffffff",
+            "background-canvas": "#F7FBFC",
+            "outline-variant": "#e2eaf0",
+            "text-secondary": "#637882",
+            "primary-soft": "#DDF4F8",
+            "mint-soft": "#E4F7EB",
+            "yellow-soft": "#FFF5D6",
+            "border-hairline": "#E7EFF3"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "2xl": "1.25rem",
+            "3xl": "1.75rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            sans: ["Nunito Sans", "sans-serif"],
+            "body-md": ["Nunito Sans", "sans-serif"],
+            "headline-md": ["Nunito Sans", "sans-serif"],
+            "headline-sm": ["Nunito Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+      font-family: 'Nunito Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#F0F7FB] min-h-screen font-body-md text-on-surface flex justify-center selection:bg-primary-soft selection:text-primary">
+  <div class="w-full max-w-[480px] min-h-screen flex flex-col justify-between relative bg-background shadow-2xl overflow-x-hidden">
+    <!-- Top Atmosphere Gradient (matching the soft sky-blue gradient in dashboard_siswa) -->
+    <div class="absolute top-0 left-0 right-0 h-80 bg-gradient-to-b from-[#BAE8F8] via-[#DCF3FB] to-transparent pointer-events-none z-0"></div>
+
+    <!-- Main Container -->
+    <main class="flex flex-col flex-1 w-full px-5 pt-safe relative z-10">
+      <!-- Top Brand Bar -->
+      <header class="pt-6 pb-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-2xl bg-white/90 border border-white shadow-xs flex items-center justify-center p-1 overflow-hidden">
+            <img src="./Logo1.png" alt="Logo SMK Plus Pelita Nusantara" class="w-full h-full object-contain">
+          </div>
+          <div>
+            <span class="font-extrabold text-[16px] text-on-surface tracking-tight block leading-tight">PKL Monitoring</span>
+            <span class="text-[11px] text-text-secondary font-semibold">Portal Siswa</span>
+          </div>
+        </div>
+        <span class="px-2.5 py-1 text-[11px] font-bold text-primary bg-primary-soft/90 rounded-full border border-primary/20">
+          Versi MVP v1
+        </span>
+      </header>
+
+      <!-- Welcome / Hero Section -->
+      <section class="mt-4 mb-5 text-center">
+        <div class="w-20 h-20 rounded-3xl bg-primary-soft border border-[#BDE7F1] flex items-center justify-center text-primary shadow-xs mx-auto mb-3.5">
+          <span class="material-symbols-outlined text-[42px]">badge</span>
+        </div>
+        <h1 class="text-[22px] font-extrabold text-on-surface leading-tight">Masuk ke Akun Siswa</h1>
+        <p class="text-[13px] text-text-secondary mt-1.5 max-w-[340px] mx-auto leading-relaxed">
+          Pantau absensi kehadiran, bukti selfie wajah, tanda tangan, dan jurnal harian PKL kamu.
+        </p>
+      </section>
+
+      <!-- Quick Demo Account Fill -->
+      <div class="mb-4 flex items-center justify-between p-2.5 rounded-xl bg-white/80 border border-border-hairline text-[11px]">
+        <span class="text-text-secondary font-medium flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px] text-primary">info</span>
+          Gunakan akun demo:
+        </span>
+        <button id="btn-fill-demo" type="button" class="px-2.5 py-1 rounded-lg bg-primary-soft text-primary font-bold hover:bg-primary-soft/80 transition-colors cursor-pointer">
+          Isi Otomatis (Nathan)
+        </button>
+      </div>
+
+      <!-- Login Form Card -->
+      <div class="p-5 rounded-2xl bg-white border border-border-hairline shadow-xs">
+        <form id="form-login" class="space-y-4">
+          <!-- Username / NIS Field -->
+          <div>
+            <label for="input-identifier" class="text-[12px] font-bold text-on-surface mb-1.5 flex items-center gap-1.5">
+              <span>NIS atau Email Siswa</span>
+              <span class="text-status-error">*</span>
+            </label>
+            <div class="relative flex items-center">
+              <span class="material-symbols-outlined absolute left-3.5 text-text-secondary text-[20px] pointer-events-none">person</span>
+              <input 
+                id="input-identifier" 
+                name="identifier" 
+                type="text" 
+                required 
+                placeholder="Contoh: 202611029 atau nathan@smk.id"
+                class="w-full pl-11 pr-4 py-2.5 rounded-xl border border-border-hairline bg-white text-on-surface text-[13px] font-medium placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              >
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="input-password" class="text-[12px] font-bold text-on-surface flex items-center gap-1.5">
+                <span>Kata Sandi</span>
+                <span class="text-status-error">*</span>
+              </label>
+              <span class="text-[10px] text-text-secondary font-semibold">Min. 6 Karakter</span>
+            </div>
+            <div class="relative flex items-center">
+              <span class="material-symbols-outlined absolute left-3.5 text-text-secondary text-[20px] pointer-events-none">lock</span>
+              <input 
+                id="input-password" 
+                name="password" 
+                type="password" 
+                required 
+                placeholder="Masukkan kata sandi akun"
+                class="w-full pl-11 pr-11 py-2.5 rounded-xl border border-border-hairline bg-white text-on-surface text-[13px] font-medium placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              >
+              <button 
+                id="btn-toggle-password" 
+                type="button" 
+                aria-label="Tampilkan atau sembunyikan kata sandi"
+                class="absolute right-3 text-text-secondary hover:text-primary transition-colors cursor-pointer p-1 flex items-center justify-center"
+              >
+                <span id="icon-toggle-password" class="material-symbols-outlined text-[20px]">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Inline Error Alert (Simulated) -->
+          <div id="alert-error" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-status-error text-[12px] flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] shrink-0">error</span>
+            <span id="alert-error-text" class="leading-tight font-medium">Email/NIS atau kata sandi tidak sesuai.</span>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            id="btn-submit" 
+            type="submit" 
+            class="mt-2 w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#00626D] to-[#0A8597] hover:opacity-95 text-white font-bold text-[14px] flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(0,98,109,0.25)] transition-all cursor-pointer active:scale-95"
+          >
+            <span>Masuk Sekarang</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Assistance & Notice Card -->
+      <div class="mt-4 p-4 rounded-2xl bg-white/80 border border-border-hairline shadow-xs flex items-start gap-3">
+        <div class="w-8 h-8 rounded-xl bg-yellow-soft text-status-warning flex items-center justify-center shrink-0 mt-0.5">
+          <span class="material-symbols-outlined text-[18px]">help_center</span>
+        </div>
+        <div>
+          <h2 class="text-[12px] font-bold text-on-surface">Informasi Akun PKL</h2>
+          <p class="text-[11px] text-text-secondary mt-0.5 leading-relaxed">
+            Akun siswa diterbitkan langsung oleh pihak sekolah. Apabila kamu lupa kata sandi atau belum terdaftar, silakan hubungi Guru Pembimbing PKL Anda.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Footer Links -->
+    <footer class="w-full px-5 py-6 text-center z-10">
+      <div class="pt-3 border-t border-border-hairline/80 flex flex-col items-center gap-2">
+        <a href="../dashboard_siswa/code.html" class="text-[12px] font-bold text-primary hover:underline flex items-center gap-1">
+          <span class="material-symbols-outlined text-[15px]">dashboard</span>
+          <span>Buka Langsung Dashboard Siswa</span>
+        </a>
+        <p class="text-[11px] text-text-secondary font-medium">
+          Sistem Monitoring Siswa PKL &copy; 2026
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const formLogin = document.getElementById('form-login');
+    const inputIdentifier = document.getElementById('input-identifier');
+    const inputPassword = document.getElementById('input-password');
+    const btnTogglePassword = document.getElementById('btn-toggle-password');
+    const iconTogglePassword = document.getElementById('icon-toggle-password');
+    const alertError = document.getElementById('alert-error');
+    const btnFillDemo = document.getElementById('btn-fill-demo');
+    const btnSubmit = document.getElementById('btn-submit');
+
+    // Fill Demo Credentials
+    btnFillDemo.addEventListener('click', () => {
+      inputIdentifier.value = '202611029';
+      inputPassword.value = 'pkl2026';
+      alertError.classList.add('hidden');
+    });
+
+    // Toggle Password Visibility
+    btnTogglePassword.addEventListener('click', () => {
+      const isPassword = inputPassword.getAttribute('type') === 'password';
+      if (isPassword) {
+        inputPassword.setAttribute('type', 'text');
+        iconTogglePassword.textContent = 'visibility_off';
+      } else {
+        inputPassword.setAttribute('type', 'password');
+        iconTogglePassword.textContent = 'visibility';
+      }
+    });
+
+    // Form Submission Handler
+    formLogin.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alertError.classList.add('hidden');
+
+      const identifier = inputIdentifier.value.trim();
+      const password = inputPassword.value.trim();
+
+      if (!identifier || !password) {
+        alertError.classList.remove('hidden');
+        return;
+      }
+
+      // Visual feedback on submit
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = `
+        <span class="material-symbols-outlined text-[18px] animate-spin">sync</span>
+        <span>Memverifikasi Akun...</span>
+      `;
+
+      setTimeout(() => {
+        // Redirection to student dashboard
+        window.location.href = '../dashboard_siswa/code.html';
+      }, 700);
+    });
+  </script>
+</body>
+</html>

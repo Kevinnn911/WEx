@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<meta content="mobile_tab" name="shell-type">
+<title>PKL Monitoring - Siswa</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..900;1,6..12,300..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+      body {
+        overscroll-behavior-y: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#98f0ff",
+            "surface-bright": "#f3faff",
+            "on-secondary-container": "#673800",
+            "background": "#F7FBFC",
+            "surface-container-low": "#e6f6ff",
+            "on-tertiary": "#ffffff",
+            "surface-white": "#FFFFFF",
+            "status-success": "#18794E",
+            "on-error": "#ffffff",
+            "outline": "#6e797b",
+            "on-surface": "#0E2933",
+            "status-error": "#B42318",
+            "error": "#ba1a1a",
+            "primary-container": "#0b7c8a",
+            "primary-fixed": "#9af0ff",
+            "accent-deep": "#B85C00",
+            "surface-container": "#daf2fe",
+            "secondary": "#E67E22",
+            "tertiary": "#00616c",
+            "status-warning": "#A15C00",
+            "on-surface-variant": "#4E6169",
+            "primary": "#008294",
+            "surface-container-lowest": "#ffffff",
+            "background-canvas": "#F7FBFC",
+            "outline-variant": "#e2eaf0",
+            "text-secondary": "#637882",
+            "primary-soft": "#DDF4F8",
+            "mint-soft": "#E4F7EB",
+            "yellow-soft": "#FFF5D6",
+            "border-hairline": "#E7EFF3"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "2xl": "1.25rem",
+            "3xl": "1.75rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            sans: ["Nunito Sans", "sans-serif"],
+            "body-md": ["Nunito Sans", "sans-serif"],
+            "headline-md": ["Nunito Sans", "sans-serif"],
+            "headline-sm": ["Nunito Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+      font-family: 'Nunito Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#F0F7FB] min-h-screen font-body-md text-on-surface flex justify-center selection:bg-primary-soft selection:text-primary">
+<div class="w-full max-w-[480px] min-h-screen flex flex-col relative bg-background shadow-2xl overflow-x-hidden">
+<!-- Top Atmosphere Gradient (matching the soft sky-blue gradient in the reference image) -->
+<div class="absolute top-0 left-0 right-0 h-80 bg-gradient-to-b from-[#BAE8F8] via-[#DCF3FB] to-transparent pointer-events-none z-0"></div>
+<!-- Main Container -->
+<main class="flex flex-col flex-1 w-full px-5 pt-safe pb-32 relative z-10"><!-- Top Header -->
+<header class="pt-4 pb-3 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <div class="relative">
+      <div class="w-12 h-12 rounded-full ring-2 ring-white shadow-sm overflow-hidden bg-primary-soft flex items-center justify-center text-primary font-extrabold text-lg">
+        <span class="material-symbols-outlined text-[28px]">account_circle</span>
+      </div>
+      <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-status-success rounded-full border-2 border-white"></span>
+    </div>
+    <div>
+      <div class="flex items-center gap-1.5">
+        <h1 class="text-[17px] font-bold text-on-surface leading-tight">Selamat Pagi, Nathan</h1>
+      </div>
+      <p class="text-[12px] text-text-secondary font-medium mt-0.5">Selasa, 22 September 2026</p>
+    </div>
+  </div>
+  <div class="flex items-center gap-2">
+    <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-orange-100 border border-orange-200 shadow-xs">
+      <span class="material-symbols-outlined text-secondary text-[16px]">local_fire_department</span>
+      <span class="text-[11px] font-bold text-accent-deep">Hari ke-28</span>
+    </div>
+    <button class="w-9 h-9 rounded-full bg-white/90 border border-border-hairline shadow-xs flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative cursor-pointer">
+      <span class="material-symbols-outlined text-[20px]">notifications</span>
+      <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-white"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Internship Info Card -->
+<div class="mt-3 p-4 rounded-2xl bg-white border border-border-hairline shadow-xs">
+  <div class="flex items-start justify-between pb-3 border-b border-border-hairline/80">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-[15px] text-on-surface">PT Telkom Indonesia</span>
+        <span class="px-2 py-0.5 text-[10px] font-bold text-status-success bg-mint-soft rounded-full">Aktif</span>
+      </div>
+      <p class="text-[12px] text-text-secondary mt-0.5 flex items-center gap-1">
+        <span class="material-symbols-outlined text-[14px] text-primary">domain</span>
+        Divisi Network Operations Center
+      </p>
+    </div>
+    <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+      <span class="material-symbols-outlined text-[20px]">router</span>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 gap-2 pt-3 text-[11px]">
+    <div class="flex items-center gap-1.5 text-text-secondary">
+      <span class="material-symbols-outlined text-[15px] text-primary">school</span>
+      <span class="font-semibold text-on-surface">XI TKJ 1</span> • TKJ
+    </div>
+    <div class="flex items-center gap-1.5 text-text-secondary justify-end">
+      <span class="material-symbols-outlined text-[15px] text-primary">badge</span>
+      <span class="truncate">Bpk. Andi Pratama</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-text-secondary">
+      <span class="material-symbols-outlined text-[15px] text-primary">date_range</span>
+      <span class="">Sep - Nov 2026 (3 Bulan)</span>
+    </div>
+    <div class="flex items-center gap-1.5 text-text-secondary justify-end">
+      <span class="material-symbols-outlined text-[15px] text-secondary">timelapse</span>
+      <span class="font-semibold text-accent-deep">Minggu ke-4 / 12</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Daily Activity Card -->
+<div class="mt-4 p-5 rounded-2xl bg-gradient-to-br from-[#E3F6FA] to-[#CEEFF6] border border-[#BDE7F1] shadow-xs relative overflow-hidden">
+  <div class="flex items-start justify-between relative z-10">
+    <div class="max-w-[70%]">
+      <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100/90 text-amber-800 text-[10px] font-extrabold tracking-wide mb-2">
+        <span class="material-symbols-outlined text-[13px]">schedule</span>
+        Belum Absen
+      </div>
+      <h2 class="text-[18px] font-extrabold text-[#0B4D58] leading-tight">Aktivitas Hari Ini</h2>
+      <p class="text-[12px] text-[#2B616C] mt-1.5 leading-relaxed">
+        Lakukan absensi foto wajah dan tanda tangan sebelum mengisi laporan kegiatan harian.
+      </p>
+    </div>
+    <div class="w-16 h-16 flex items-center justify-center text-[#0B7C8A] bg-white/70 backdrop-blur-xs rounded-2xl shadow-xs border border-white">
+      <span class="material-symbols-outlined text-[38px]">smart_toy</span>
+    </div>
+  </div>
+  <button id="btn-presensi" class="mt-4 w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#00626D] to-[#0A8597] hover:opacity-95 text-white font-bold text-[13px] flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(0,98,109,0.25)] transition-all cursor-pointer active:scale-95">
+    <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+    <span class="">Absensi Sekarang</span>
+    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+  </button>
+</div>
+
+<!-- Menu Tugas Harian (2 columns) -->
+<div class="mt-5">
+  <div class="flex items-center justify-between mb-3">
+    <h3 class="text-[14px] font-bold text-on-surface">Tugas Harian</h3>
+    <span class="text-[11px] text-text-secondary">Status Hari Ini</span>
+  </div>
+  <div class="grid grid-cols-2 gap-3">
+    <!-- Left Card: Presensi -->
+    <div class="p-3.5 rounded-2xl bg-white border border-border-hairline shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
+      <div>
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="w-9 h-9 rounded-xl bg-mint-soft flex items-center justify-center text-status-success">
+            <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+          </div>
+          <span class="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-red-100 text-status-error uppercase tracking-wider">WAJIB</span>
+        </div>
+        <h4 class="text-[13px] font-bold text-on-surface">Presensi Harian</h4>
+        <p class="text-[11px] text-text-secondary mt-1 line-clamp-2 leading-relaxed">Selfie lokasi &amp; tanda tangan digital</p>
+      </div>
+      <a href="#" class="mt-3 pt-2 border-t border-border-hairline flex items-center justify-between text-primary font-bold text-[11px] hover:underline">
+        <span class="">Buka Kamera</span>
+        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Right Card: Laporan Jurnal -->
+    <div class="p-3.5 rounded-2xl bg-white border border-border-hairline shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
+      <div>
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="w-9 h-9 rounded-xl bg-yellow-soft flex items-center justify-center text-status-warning">
+            <span class="material-symbols-outlined text-[20px]">edit_document</span>
+          </div>
+          <span class="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-amber-100 text-status-warning uppercase tracking-wider">PENDING</span>
+        </div>
+        <h4 class="text-[13px] font-bold text-on-surface">Laporan Jurnal</h4>
+        <p class="text-[11px] text-text-secondary mt-1 line-clamp-2 leading-relaxed">Ringkasan tugas &amp; dokumentasi kerja</p>
+      </div>
+      <a href="#" class="mt-3 pt-2 border-t border-border-hairline flex items-center justify-between text-primary font-bold text-[11px] hover:underline">
+        <span class="">Tulis Jurnal</span>
+        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Riwayat Terakhir Section -->
+<div class="mt-6">
+  <div class="flex items-center justify-between mb-3">
+    <h3 class="text-[14px] font-bold text-on-surface">Riwayat Terakhir</h3>
+    <a href="#" class="text-[11px] font-bold text-primary hover:underline flex items-center gap-0.5">
+      <span class="">Lihat Semua</span>
+      <span class="material-symbols-outlined text-[13px]">chevron_right</span>
+    </a>
+  </div>
+  <div class="space-y-2.5">
+    <!-- Activity Card 1 -->
+    <div class="p-3.5 rounded-2xl bg-white border border-border-hairline shadow-xs flex items-center justify-between hover:border-primary-soft transition-all">
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 rounded-xl bg-mint-soft text-status-success flex items-center justify-center mt-0.5 shrink-0">
+          <span class="material-symbols-outlined text-[18px]">check_circle</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-[12px] font-bold text-on-surface">Senin, 21 September 2026</span>
+            <span class="text-[10px] text-text-secondary">• 07:50 WIB</span>
+          </div>
+          <p class="text-[11px] text-text-secondary mt-0.5 font-medium">Laporan: Konfigurasi VLAN &amp; Trunking Switch</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-primary text-[10px] font-semibold">
+              <span class="material-symbols-outlined text-[12px]">draw</span>
+              TTD Terverifikasi
+            </span>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-text-secondary text-[10px] font-semibold">
+              <span class="material-symbols-outlined text-[12px]">image</span>
+              2 Foto
+            </span>
+          </div>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-text-secondary text-[18px]">chevron_right</span>
+    </div>
+
+    <!-- Activity Card 2 -->
+    <div class="p-3.5 rounded-2xl bg-white border border-border-hairline shadow-xs flex items-center justify-between hover:border-primary-soft transition-all">
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 rounded-xl bg-mint-soft text-status-success flex items-center justify-center mt-0.5 shrink-0">
+          <span class="material-symbols-outlined text-[18px]">check_circle</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-[12px] font-bold text-on-surface">Jumat, 19 September 2026</span>
+            <span class="text-[10px] text-text-secondary">• 07:45 WIB</span>
+          </div>
+          <p class="text-[11px] text-text-secondary mt-0.5 font-medium">Laporan: Perakitan PC Server &amp; Pengkabelan</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-primary text-[10px] font-semibold">
+              <span class="material-symbols-outlined text-[12px]">draw</span>
+              TTD Terverifikasi
+            </span>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-text-secondary text-[10px] font-semibold">
+              <span class="material-symbols-outlined text-[12px]">image</span>
+              1 Foto
+            </span>
+          </div>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-text-secondary text-[18px]">chevron_right</span>
+    </div>
+  </div>
+</div>
+
+<!-- Tip / Reminder Banner -->
+<div class="mt-4 p-3.5 rounded-2xl bg-yellow-soft/80 border border-amber-200/70 flex items-start gap-2.5">
+  <span class="material-symbols-outlined text-status-warning text-[20px] shrink-0 mt-0.5">lightbulb</span>
+  <p class="text-[11px] text-amber-900 leading-snug font-medium">
+    Pastikan pencahayaan cukup saat mengambil foto presensi dan serahkan jurnal sebelum pukul <span class="font-bold">17:00 WIB</span>!
+  </p>
+</div></main>
+<!-- Bottom Navigation Bar (Soft clean white rounded bar with modern minimalist active indicator like reference) -->
+<div class="fixed bottom-0 left-0 right-0 w-full max-w-[480px] mx-auto z-50 pointer-events-none px-4 pb-safe pb-4"><nav class="pointer-events-auto relative w-full bg-white/90 backdrop-blur-xl border border-white/80 rounded-3xl shadow-[0_12px_32px_rgba(7,30,39,0.12),0_2px_6px_rgba(7,30,39,0.04)] px-3 py-2 flex items-center justify-between" data-active-classes="text-primary font-bold"><a aria-current="page" class="flex flex-col items-center justify-center py-1 px-2.5 rounded-2xl bg-primary-soft/80 text-primary transition-all duration-200 group active:scale-95" data-path="dashboard-siswa" href="#"><span class="material-symbols-outlined text-[20px] transition-transform group-hover:scale-110" style="font-variation-settings: 'FILL' 1;">home</span><span class="text-[11px] font-black tracking-tight mt-0.5">Home</span><span class="w-1 h-1 rounded-full bg-primary mt-0.5"></span></a><a class="flex flex-col items-center justify-center py-1 px-2 text-[#7E939C] hover:text-primary transition-all duration-200 group active:scale-95" data-path="laporan-kegiatan" href="#"><span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110">description</span><span class="text-[10px] font-bold tracking-tight mt-0.5">Laporan</span><span class="w-1 h-1 rounded-full bg-transparent mt-0.5"></span></a><div class="relative -top-5 flex flex-col items-center"><a class="w-14 h-14 rounded-full bg-gradient-to-br from-[#129BB0] via-[#0A8597] to-[#00626D] text-white shadow-[0_8px_20px_rgba(0,130,148,0.38)] ring-4 ring-[#F0F7FB] flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 group cursor-pointer" data-path="absensi-harian" href="#"><span class="material-symbols-outlined text-[26px] drop-shadow-xs transition-transform group-hover:rotate-6" style="font-variation-settings: 'FILL' 1;">photo_camera</span></a><span class="text-[10px] font-extrabold text-[#00626D] tracking-tight mt-1">Absensi</span></div><a class="flex flex-col items-center justify-center py-1 px-2 text-[#7E939C] hover:text-primary transition-all duration-200 group active:scale-95" data-path="riwayat-kehadiran" href="#"><span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110">history</span><span class="text-[10px] font-bold tracking-tight mt-0.5">Riwayat</span><span class="w-1 h-1 rounded-full bg-transparent mt-0.5"></span></a><a class="flex flex-col items-center justify-center py-1 px-2 text-[#7E939C] hover:text-primary transition-all duration-200 group active:scale-95" data-path="profil-siswa" href="#"><span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110">person</span><span class="text-[10px] font-bold tracking-tight mt-0.5">Profil</span><span class="w-1 h-1 rounded-full bg-transparent mt-0.5"></span></a></nav></div>
+</div>
+<script>
+    // Micro-interaction for hero CTA
+    document.getElementById('btn-presensi')?.addEventListener('click', function() {
+      this.classList.add('scale-95');
+      setTimeout(() => {
+        this.classList.remove('scale-95');
+        const absensiLink = document.querySelector('a[data-path="absensi-harian"]');
+        if (absensiLink) {
+          absensiLink.click();
+        }
+      }, 150);
+    });
+  </script>
+
+
+</body></html>
