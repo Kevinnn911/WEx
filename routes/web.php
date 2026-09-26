@@ -46,6 +46,7 @@ Route::middleware(['auth', 'role:guru,admin'])->prefix('admin')->name('admin.')-
 
     // Rekapitulasi & Ekspor Laporan
     Route::get('/rekap', [RekapController::class, 'index'])->name('rekap.index');
+    Route::get('/rekap/export-excel', [RekapController::class, 'exportExcel'])->name('rekap.export-excel');
     Route::get('/rekap/export-csv', [RekapController::class, 'exportCsv'])->name('rekap.export-csv');
     Route::get('/rekap/cetak', [RekapController::class, 'cetak'])->name('rekap.cetak');
 });

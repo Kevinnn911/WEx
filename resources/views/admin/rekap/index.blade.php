@@ -1,7 +1,7 @@
 <!-- File: resources/views/admin/rekap/index.blade.php -->
 @extends('layouts.admin')
 
-@section('title', 'Rekapitulasi Presensi & Jurnal PKL - Sekolah')
+@section('title', 'Rekapitulasi Presensi & Jurnal PKL — Sekolah')
 
 @section('content')
 <div class="space-y-6">
@@ -10,21 +10,31 @@
     <div>
       <h1 class="text-2xl font-black text-on-surface tracking-tight">Rekapitulasi Presensi &amp; Jurnal PKL</h1>
       <p class="text-xs text-text-secondary mt-0.5">
-        Laporan rekap kehadiran siswa dan catatan tugas harian untuk arsip kurikulum dan evaluasi sekolah.
+        Laporan rekap kehadiran siswa dan catatan jurnal harian untuk evaluasi dan arsip kurikulum sekolah.
       </p>
     </div>
-    <div class="flex items-center gap-2">
-      <!-- Ekspor CSV -->
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- Ekspor Excel (.xls) — Format Utama & Rapi seperti Template Siswa -->
+      <a
+        href="{{ route('admin.rekap.export-excel', request()->query()) }}"
+        class="px-4 py-2.5 rounded-xl border border-primary/30 bg-primary-soft hover:bg-primary/20 text-primary font-extrabold text-xs shadow-xs transition-colors flex items-center gap-2"
+        title="Unduh laporan lengkap format Microsoft Excel (.xls) dengan styling tabel dan kolom rapi"
+      >
+        <span class="material-symbols-outlined text-[18px]">table_view</span>
+        <span>Ekspor Excel (.xls)</span>
+      </a>
+
+      <!-- Ekspor CSV (.csv) — Kompatibel Excel Regional Indonesia -->
       <a
         href="{{ route('admin.rekap.export-csv', request()->query()) }}"
-        class="px-4 py-2.5 rounded-xl border border-border-hairline bg-white hover:bg-background text-on-surface font-bold text-xs shadow-xs transition-colors flex items-center gap-2"
-        title="Unduh format spreadsheet CSV"
+        class="px-3.5 py-2.5 rounded-xl border border-border-hairline bg-white hover:bg-gray-50 text-text-secondary font-bold text-xs shadow-xs transition-colors flex items-center gap-2"
+        title="Unduh format spreadsheet CSV (Pemisah titik-koma ';' kompatibel Excel)"
       >
-        <span class="material-symbols-outlined text-[18px] text-status-success">table_view</span>
+        <span class="material-symbols-outlined text-[18px]">download</span>
         <span>Ekspor CSV</span>
       </a>
 
-      <!-- Cetak / Print Dokumen -->
+      <!-- Cetak / Print Dokumen A4 Resmi -->
       <a
         href="{{ route('admin.rekap.cetak', request()->query()) }}"
         target="_blank"

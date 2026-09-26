@@ -73,3 +73,18 @@ Dokumentasi pelacakan bug, perbaikan visual, dan optimasi sistem sesuai kaidah S
 - **Solution:**
   Menambahkan pengecekan dimensi agar tidak mereset jika ukuran tidak berubah, serta mekanisme penyimpanan buffer sementara (`toDataURL` -> `drawImage`) sebelum redimensioning kanvas.
 - **Target Deadline:** Immediate (Selesai pada 23 September 2026)
+
+---
+
+### [PRIORITY: MEDIUM]
+- **Location:** [`app/Http/Controllers/RekapController.php`](file:///c:/Proyek%20Gua/WEx/app/Http/Controllers/RekapController.php) & [`resources/views/admin/rekap/index.blade.php`](file:///c:/Proyek%20Gua/WEx/resources/views/admin/rekap/index.blade.php)
+- **Severity:** Medium (CSV Text Clumping in Regional Excel & Lack of Styled SpreadsheetML Export)
+- **Status:** Resolved (Terselesaikan)
+- **Root Cause:**
+  1. Fungsi `exportCsv` menggunakan pemisah bawaan koma (`,`) sehingga saat dibuka di Microsoft Excel dengan locale regional Indonesia (list separator titik koma `;`), seluruh kolom tergabung dalam sel A1 tanpa terbagi ke kolom A sampai L.
+  2. Belum tersedianya opsi ekspor spreadsheet Excel berformat murni (`.xls` SpreadsheetML) dengan perataan warna, border, dan tata letak profesional seperti yang sudah diterapkan pada template impor akun siswa.
+- **Solution:**
+  1. Menyediakan endpoint ekspor resmi `admin.rekap.export-excel` berbasis SpreadsheetML XML dengan styling header teal institusional (`#008294`), border, penyesuaian lebar kolom otomatis, badge status kehadiran berwarna, dan formatting teks pada sel NISN.
+  2. Memperbaiki `exportCsv` dengan menambahkan UTF-8 BOM (`\xEF\xBB\xBF`) dan menggunakan pemisah titik koma (`;`) yang kompatibel langsung dengan Microsoft Excel regional Indonesia.
+  3. Memperbarui antarmuka pengguna pada halaman Rekapitulasi dengan tombol aksi yang serasi: *"Ekspor Excel (.xls)"* sebagai opsi utama dan *"Ekspor CSV"* sebagai opsi alternatif.
+- **Target Deadline:** Immediate (Selesai pada 27 September 2026)

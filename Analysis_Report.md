@@ -357,6 +357,35 @@ Laporan analisis dan dokumentasi implementasi fitur secara berkala sesuai dengan
   - NISN terlindungi dari konversi otomatis angka atau penghilangan angka nol awal.
   - Pengguna bebas mengunggah kembali berkas hasil editan baik dalam format Excel `.xls` maupun CSV tanpa kendala parsing.
 
+---
+
+### [DONE]
+- **Status:** Selesai (Completed)
+- **Feature:** Peningkatan Ekspor Spreadsheet Rekapitulasi Presensi & Jurnal PKL (Format Excel .xls & CSV Kompatibel)
+- **Technical Implementation:**
+  - **Penyediaan Mesin Generator SpreadsheetML Microsoft Excel ([`app/Http/Controllers/RekapController.php`](file:///c:/Proyek%20Gua/WEx/app/Http/Controllers/RekapController.php)):**
+    - Mengembangkan metode `exportExcel(Request $request): Response` yang menghasilkan berkas spreadsheet XML murni Microsoft Excel (`application/vnd.ms-excel; charset=UTF-8`).
+    - Merancang banner identitas resmi di baris atas dokumen (*Title* ukuran 14pt `#00626D`, *Subtitle*, rentang tanggal periode yang dipilih, dan waktu pencetakan).
+    - Menerapkan header tabel berlatar belakang teal institusional `#008294`, teks putih tebal, perataan tengah, tinggi baris 28px, dan border kontinu.
+    - Menetapkan lebar kolom yang proporsional (40px hingga 260px) untuk seluruh 12 kolom informasi (No, Tanggal, Jam Presensi, NISN, Nama Siswa, Kelas, Jurusan, Tempat PKL, Guru Pembimbing, Status Kehadiran, Rencana Tugas / Jurnal, Catatan Kendala).
+    - Memformat sel NISN dengan gaya Text (`@`) agar angka nol di awal tidak terpotong saat dibuka di Microsoft Excel.
+    - Memberikan pewarnaan semantik (*semantic badge styling*) pada status kehadiran: HADIR berlatar hijau lembut `#DEF7EC` dengan teks hijau gelap `#03543F`, IZIN/SAKIT berlatar kuning `#FEF08A`, dan ALFA berlatar merah `#FEE2E2`.
+    - Mengaktifkan *wrap text* (`ss:WrapText="1"`) pada kolom Rencana Tugas dan Catatan untuk keterbacaan optimal.
+    - Menambahkan baris ringkasan (*Summary Row*) di baris terbawah dengan kalkulasi total data presensi, total hadir, dan total izin/sakit.
+  - **Perbaikan Format Delimiter Ekspor CSV ([`app/Http/Controllers/RekapController.php`](file:///c:/Proyek%20Gua/WEx/app/Http/Controllers/RekapController.php)):**
+    - Memperbarui pemisah kolom dari koma (`,`) menjadi titik koma (`;`) pada `fputcsv` dan menyematkan UTF-8 BOM (`\xEF\xBB\xBF`).
+    - Mencegah masalah pengelompokan teks satu baris penuh ke kolom A1 pada instalasi Microsoft Excel dengan pengaturan regional Indonesia.
+  - **Refaktorisasi & DRY Filter Query ([`app/Http/Controllers/RekapController.php`](file:///c:/Proyek%20Gua/WEx/app/Http/Controllers/RekapController.php)):**
+    - Mengekstraksi logika pembangun kueri filter tanggal, kelas, tempat PKL, dan status ke dalam metode privat `buildFilterQuery()` yang digunakan bersama oleh `index()`, `exportExcel()`, `exportCsv()`, dan `cetak()`.
+  - **Pembaruan Rute & Antarmuka ([`routes/web.php`](file:///c:/Proyek%20Gua/WEx/routes/web.php) & [`resources/views/admin/rekap/index.blade.php`](file:///c:/Proyek%20Gua/WEx/resources/views/admin/rekap/index.blade.php)):**
+    - Mendaftarkan rute `admin.rekap.export-excel` dengan proteksi middleware otentikasi peran `guru` dan `admin`.
+    - Menyesuaikan tombol aksi di bagian header halaman rekapitulasi agar seirama dengan halaman template bulk akun siswa: tombol utama *"Ekspor Excel (.xls)"*, tombol sekunder *"Ekspor CSV"*, dan tombol *"Cetak Laporan"*.
+  - **Pengujian Otomatis ([`tests/Feature/PklMonitoringTest.php`](file:///c:/Proyek%20Gua/WEx/tests/Feature/PklMonitoringTest.php)):**
+    - Memperluas pengujian `test_admin_and_guru_can_access_rekap_and_export_csv` untuk memvalidasi endpoint `admin.rekap.export-excel` dan integritas pemisah titik koma pada `admin.rekap.export-csv`.
+- **Impact:**
+  - Laporan rekapitulasi kini dapat diunduh langsung dalam format Excel `.xls` dengan tabel berwarna, terstruktur, ber-border, dan langsung terbagi rapi pada kolom A sampai L tanpa teks menumpuk di kolom A1.
+  - Berkas CSV alternatif juga membuka kolom secara terpisah dan otomatis pada sistem operasi/Excel berbahasa Indonesia.
+
 
 
 

@@ -479,6 +479,15 @@ class PklMonitoringTest extends TestCase
         $responseCsv = $this->actingAs($this->admin)->get('/admin/rekap/export-csv');
         $responseCsv->assertStatus(200);
         $responseCsv->assertHeader('Content-Type', 'text/csv; charset=UTF-8');
+        $this->assertStringContainsString(';', $responseCsv->streamedContent());
+        $this->assertStringContainsString('Nathan Hall', $responseCsv->streamedContent());
+
+        // Excel .xls export
+        $responseExcel = $this->actingAs($this->admin)->get('/admin/rekap/export-excel');
+        $responseExcel->assertStatus(200);
+        $responseExcel->assertHeader('Content-Type', 'application/vnd.ms-excel; charset=UTF-8');
+        $this->assertStringContainsString('urn:schemas-microsoft-com:office:spreadsheet', $responseExcel->getContent());
+        $this->assertStringContainsString('Nathan Hall', $responseExcel->getContent());
     }
 
     public function test_guru_cannot_access_admin_crud_routes(): void
